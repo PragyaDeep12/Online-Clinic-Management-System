@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="default" extends="struts-default">
+	    
+	    <action name="RegisterPatient"  class="com.clinicmanagement.Action.RegisterPatientAction" method="viewPage">
+			<result name="valid">/RegisterPatient.jsp</result>
+		</action>
+		<action name="RegisterPatientSubmit"  class="com.clinicmanagement.Action.RegisterPatientAction" method="AddPatient">
+			<result name="success">/ConfirmationPage.jsp</result>
+			<result name="failed">/RegisterPatient.jsp</result>
+			
+		</action>
+		<action name="RegisterPatientConfirmSubmit"  class="com.clinicmanagement.Action.RegisterPatientAction" method="AddPatientConfirmed">
+			<result name="success">/Home.jsp</result>
+			<result name="failed">/RegisterPatient.jsp</result>
+			
+		</action>
+		<action name="LoginPatientSubmit"  class="com.clinicmanagement.Action.LoginPatientAction" method="PatientLogin">
+			<result name="success">/PatientAccount.jsp</result>
+			<result name="failed">/PatientLogin.jsp</result>
+			
+		</action>
+		<action name="doctorafterlogin"  class="com.clinicmanagement.Action.DoctorLogin" method="viewAfterLogin">
+			<result name="SUCCESS">/AfterLogin.jsp</result>
+			
+		</action>
+		<action name="doctorloginview" class="com.clinicmanagement.Action.DoctorLogin" method="viewLogin">
+	   <result name="SUCCESS">/DoctorLogin.jsp</result>
+	   </action>
+	   <action name="doctorlogin" class="com.clinicmanagement.Action.DoctorLogin" method="login">
+	   <result name="VALID">/AfterLogin.jsp</result>
+	   <result name="input">/DoctorLogin.jsp</result>
+	   <result name="INVALID">/DoctorLogin.jsp</result>
+	   </action>
+	   
+	  <action name="doctorview" class="com.clinicmanagement.Action.DoctorUpdate" method="viewUpdate">
+	   <result name="SUCCESS">/DoctorViewDetails.jsp</result>
+	   </action>
+	   <action name="doctorupdateview" class="com.clinicmanagement.Action.DoctorUpdate" method="viewUpdate">
+	   <result name="SUCCESS">/DoctorUpdateDetails.jsp</result>
+	   </action>
+	   <action name="updatedoctor" class="com.clinicmanagement.Action.DoctorUpdateDetails" method="update">
+	   <result name="SUCCESS">/AfterLogin.jsp</result>
+	   <result name="FAIL">/DoctorUpdateDetails.jsp</result>
+	   </action>
+	  
+	  	  <action name="doctorupdateslotview" class="com.clinicmanagement.Action.DoctorUpdate" method="viewUpdate">
+	  	  <result name="SUCCESS">/DoctorUpdateSlot.jsp</result>
+	  	  </action>
+	  	  
+	  	  <action name="doctorupdateslot" class="com.clinicmanagement.Action.DoctorUpdateDetails" method="updateSlot">
+	  	  <result name="SUCCESS">/AfterLogin.jsp</result>
+	  	  <result name="FAIL" type="chain">doctorupdateslotview</result>
+	  	  </action>
+	  	  
+	   <action name="doctorfilllist" class="com.clinicmanagement.Action.DoctorRegistration" method="viewRegistration">
+	   <result name="SUCCESS">/RegisterDoctor.jsp</result>
+	  
+	   </action>
+	   
+	   <action name="registerdoctor" class="com.clinicmanagement.Action.DoctorRegistration" method="registerConfirm">
+	   <result name="VALID">/DoctorConfirm.jsp</result>
+	   <result name="INVALID" type="chain">doctorfilllist</result>
+	      </action>
+	   
+	   <action name="confirmdoctorregistration" class="com.clinicmanagement.Action.DoctorRegistration" method="register">
+	   <result name="VALID">/AfterRegister.jsp</result>
+	   <result name="INVALID">/RegisterDoctor.jsp</result>
+	   </action>
+	   
+	     <action name="doctorchangepasswordview" class="com.clinicmanagement.Action.DoctorChangePassword" method="view">
+	   <result name="SUCCESS">/DoctorChangePassword.jsp</result>
+	   </action>
+	   
+	    <action name="doctorchangepassword" class="com.clinicmanagement.Action.DoctorChangePassword" method="change">
+	   <result name="SUCCESS">/AfterLogin.jsp</result>
+	   <result name="FAIL">/DoctorChangePassword.jsp</result>
+	   </action>
+	   <action name="doctorcheckappointmentview" class="com.clinicmanagement.Action.DoctorAppointment" method="checkApp">
+	   <result name="SUCCESS">/DoctorCheckAppointment.jsp</result>
+	   </action>
+	   
+	   
+	   <action name="adminloginview" class="com.clinicmanagement.Action.AdminLogin" method="viewLogin">
+	   <result name="SUCCESS">/AdminLogin.jsp</result>
+	   </action>
+	   
+	   <action name="adminlogin" class="com.clinicmanagement.Action.AdminLogin" method="login">
+	   <result name="VALID">/AdminPage.jsp</result>
+	   <result name="INVALID">/AdminLogin.jsp</result>
+	   </action>
+	   <action name="viewalldoctors" class="com.clinicmanagement.Action.AdminViewAllDoctorsAction" method="viewDoctors">
+	   <result name="SUCCESS">/ViewAllDoctors.jsp</result>
+	   
+	   </action>
+	   <action name="deletedoctor" class="com.clinicmanagement.Action.AdminViewAllDoctorsAction" method="viewDoctors">
+	   <result name="SUCCESS">/AdminDoctorDelete.jsp</result>
+	   
+	   </action>
+	   <action name="adminaccount" class="com.clinicmanagement.Action.AdminAccount" method="viewAccount">
+	   <result name="SUCCESS">/AdminAccount.jsp</result>
+	   </action>
+	     <action name="adminaccountview" class="com.clinicmanagement.Action.AdminAccount" method="viewAccountPage">
+	   <result name="SUCCESS">/AdminAccount.jsp</result>
+	   </action>
+	   <action name="deletedoctorconfirm" class="com.clinicmanagement.Action.AdminDeleteDoctorAction" method="delete">
+	   <result name="SUCCESS" type="chain">deletedoctor</result>
+	   </action>
+	   
+	   <action name="patientloginview" class="com.clinicmanagement.Action.LoginPatientAction" method="viewLogin">
+	   <result name="SUCCESS">/PatientLogin.jsp</result>
+	   </action>
+	   
+	   <!-- 11/1/2018 .............................................................................................. -->
+	   
+		<action name="viewappointment" class="com.clinicmanagement.Action.PatientAppointmentAction" method="setList_docs">
+			<result name="DONE">/Appointment.jsp</result>
+			<result name="NOTDONE">/Home.jsp</result>
+			
+		</action>
+		<action name="UpdateDocList" class="com.clinicmanagement.Action.PatientAppointmentAction" method="setList_docsnew">
+			<result name="DONE">/Appointment.jsp</result>
+			<result name="NOTDONE">/Home.jsp</result>
+			
+		</action>
+		<action name="bookappointment" class="com.clinicmanagement.Action.PatientAppointmentAction" method="bookappointment">
+			<result name="DONE">/BookAppointment.jsp</result>
+			<result name="NOTDONE">/Home.jsp</result>
+			
+		</action>
+		<action name="checkslots" class="com.clinicmanagement.Action.PatientAppointmentAction" method="checkslots">
+			<result name="DONE">/BookAppointment.jsp</result>
+			<result name="NOTDONE">/Home.jsp</result>
+			
+		</action>
+		<action name="confirmappointment" class="com.clinicmanagement.Action.ConfirmAppointmentAction" method="confirmappointment">
+			<result name="DONE">/ConfirmAppointment.jsp</result>
+			<result name="FAIL">/FailedAppointment.jsp</result>
+		</action>
+		<action name="bookconfirmedappointment" class="com.clinicmanagement.Action.ConfirmAppointmentAction" method="bookconfirmedappointment">
+			<result name="DONE">/Home.jsp</result>
+			<result name="NOTDONE">/Appointment.jsp</result>
+			
+		</action>
+	    <action name="slotview" class="com.clinicmanagement.Action.AdminDepartmentEdit" method="viewDepartment">
+	   <result name="SUCCESS">/ViewDepartments.jsp</result>
+	   </action>
+	   
+	   <action name="addslotview" class="com.clinicmanagement.Action.AdminDepartmentEdit" method="addDepartmentView">
+	   <result name="SUCCESS">/AddDepartments.jsp</result>
+	   </action>
+	   <action name="adddepartment" class="com.clinicmanagement.Action.AdminDepartmentEdit" method="addDepartment">
+	   <result name="SUCCESS">/AdminPage.jsp</result>
+	   <result name="FAIL">/AddDepartments.jsp</result>
+	   </action>
+	   <action name="PatientUpdate" class="com.clinicmanagement.Action.LoginPatientAction" method="PatientUpdate">
+	   <result name="SUCCESS">/PatientUpdate.jsp</result>
+	   <result name="FAIL">/PatientAccount.jsp</result>
+	   </action>
+	   <action name="updatepatientdetails" class="com.clinicmanagement.Action.LoginPatientAction" method="updatepatientdetails">
+	   <result name="SUCCESS" >/PatientAccount.jsp</result>
+	   <result name="FAIL" >/PatientUpdate.jsp</result>
+	   </action>
+	   
+	   <action name="patientcancelappointment" class="com.clinicmanagement.Action.PatientCancelAppointment" method="cancelAppointment">
+	   <result name="SUCCESS" type="chain">patientviewaccount</result>
+	   <result name="FAIL">/Home.jsp</result>
+	   </action>
+	   <action name="patientviewaccount" class="com.clinicmanagement.Action.LoginPatientAction" method="viewAccount">
+	  <result name="SUCCESS">/PatientAccount.jsp</result>
+	   </action>
+	   <action name="Logout" class="com.clinicmanagement.Action.LoginPatientAction" method="logout">
+	   <result name="SUCCESS">/Home.jsp</result>
+	   <result name="FAIL">/PatientUpdate.jsp</result>
+	   </action>
+	   <action name="checkdocappo" class="com.clinicmanagement.Action.DoctorAppointment" method="checkdocappo">
+	   <result name="SUCCESS">/DoctorCheckAppointment.jsp</result>
+	   <result name="FAIL">/DoctorCheckAppointment.jsp</result>
+	   </action>
+	   
+	</package>
+
+</struts>  
